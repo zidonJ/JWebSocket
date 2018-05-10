@@ -9,6 +9,7 @@
 #import "JSRManager.h"
 #import <SocketRocket.h>
 #import "WeakTimerTarget.h"
+#import "JSRMessage.h"
 
 #define dispatch_main_async_safe(block)\
 if ([NSThread isMainThread]) {\
@@ -16,6 +17,9 @@ block();\
 } else {\
 dispatch_async(dispatch_get_main_queue(), block);\
 }
+
+NSString * const JSRLogin = @"login";
+NSString * const JSRSendMsg = @"JSRSendMsg";
 
 @interface JSRManager()<SRWebSocketDelegate>
 
@@ -41,6 +45,7 @@ dispatch_async(dispatch_get_main_queue(), block);\
 }
 
 #pragma mark -- public func
+//建立连接
 - (void)openWithUrlString:(NSString *)url
 {
     if (self.socket) return;
@@ -51,6 +56,30 @@ dispatch_async(dispatch_get_main_queue(), block);\
     
     self.socket.delegate = self;//SRWebSocketDelegate 协议
     [self.socket open];//开始连接
+}
+
+- (void)loginWithUserId:(NSDictionary *)userInfo
+{
+    NSError *error;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:userInfo options:NSJSONWritingPrettyPrinted error:&error];
+    if (data && error == nil) {
+        [self sendData:data];
+    }
+}
+
+//发送消息
+- (void)sendMessage:(id)msg
+{
+    if (![msg isKindOfClass:[NSString class]]) {
+        NSError *error;
+        NSData *data = [NSJSONSerialization dataWithJSONObject:msg options:NSJSONWritingPrettyPrinted error:&error];
+        if (data && error == nil) {
+            [self sendData:data];
+        }
+    }else{
+        [self sendData:msg];
+    }
+    
 }
 
 #pragma mark -- private func
@@ -125,9 +154,9 @@ dispatch_async(dispatch_get_main_queue(), block);\
 
 - (void)sendData:(id)data {
     
-    NSLog(@"socketSendData --------------- %@",data);
+    //NSLog(@"发送的消息内容:%@",data);
     
-    dispatch_queue_t queue =  dispatch_queue_create("jsr", NULL);
+    dispatch_queue_t queue =  dispatch_queue_create("jsr", DISPATCH_QUEUE_CONCURRENT);
     MT_WSELF
     dispatch_async(queue, ^{
         
@@ -161,7 +190,12 @@ dispatch_async(dispatch_get_main_queue(), block);\
 
 -(void)sentHeart
 {
-    [self sendData:@"heart"];
+//    NSDictionary *dic = @{@"chatId":@"111",@"content":@"这是一段经典的旋律",@"type":@"receive"};
+//    NSError *error;
+//    NSData *message = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
+//    if (message && error == nil) {
+//        [self sendData:message];
+//    }
 }
 
 #pragma mark -- SRWebSocketDelegate
@@ -210,10 +244,27 @@ dispatch_async(dispatch_get_main_queue(), block);\
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message  {
     
     if (webSocket == self.socket) {
-        NSLog(@"************************** socket收到数据了************************** ");
-        NSLog(@"我这后台约定的 message 是 json 格式数据收到数据,就按格式解析吧,然后把数据发给调用层");
-        NSLog(@"message:%@",message);
+        NSLog(@"收到约定的message是json格式数据收到数据");
+        
+        if ([message isKindOfClass:[NSData class]]) {
+            NSError *error;
+            NSData *data = (NSData *)message;
+            id value = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+            if (!error) {
+                NSLog(@"jsonValue:%@",value);
+                [self.delegate didReceiveMessage:value];
+            }            
+        }else{
+            NSLog(@"message:%@",message);
+            [self.delegate didReceiveMessage:message];
+        }
     }
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithString:(nonnull NSString *)string
+{
+    NSLog(@"Received \"%@\"", string);
+    //[self _addMessage:[[JSRMessage alloc] initWithMessage:string incoming:YES]];
 }
 
 @end

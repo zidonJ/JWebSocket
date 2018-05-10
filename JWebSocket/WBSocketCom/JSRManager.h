@@ -12,10 +12,31 @@
 #define MT_SSELF __strong __typeof__(self) self = _weakSelf;
 #define MT_SSELF_NIL_RETURN MT_SSELF;if (!self) {return ;}
 
+static NSString * const kMsgType = @"type";
+
+typedef NSString * NSMessageTypeString;
+
+extern NSMessageTypeString const JSRLogin;
+extern NSMessageTypeString const JSRSendMsg;
+
+
+@protocol JSRManagerDelegate;
+
 @interface JSRManager : NSObject
 
 + (instancetype)sharedInstance;
 
 - (void)openWithUrlString:(NSString *)url;
+- (void)sendMessage:(id)msg;
+
+- (void)loginWithUserId:(NSDictionary *)userInfo;
+
+@property (nonatomic,weak) id <JSRManagerDelegate> delegate;
+
+@end
+
+@protocol JSRManagerDelegate<NSObject>
+
+- (void)didReceiveMessage:(id)message;
 
 @end

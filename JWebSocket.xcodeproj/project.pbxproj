@@ -15,6 +15,9 @@
 		720D7F97209FFB4D0085D404 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 720D7F96209FFB4D0085D404 /* main.m */; };
 		720D7FA0209FFF780085D404 /* JSRManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 720D7F9F209FFF780085D404 /* JSRManager.m */; };
 		721A278420A1953A0042E18C /* WeakTimerTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 721A278220A1953A0042E18C /* WeakTimerTarget.m */; };
+		721A278720A284BD0042E18C /* JSRMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 721A278620A284BD0042E18C /* JSRMessage.m */; };
+		721A278A20A2A2AE0042E18C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 721A278920A2A2AE0042E18C /* User.m */; };
+		721A278C20A2F18A0042E18C /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 721A278B20A2F18A0042E18C /* readme */; };
 		86AB9B6DCA85B976829AC2AD /* libPods-JWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6117AEB92AF7A0F8693B3B /* libPods-JWebSocket.a */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +37,11 @@
 		720D7F9F209FFF780085D404 /* JSRManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRManager.m; sourceTree = "<group>"; };
 		721A278220A1953A0042E18C /* WeakTimerTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeakTimerTarget.m; sourceTree = "<group>"; };
 		721A278320A1953A0042E18C /* WeakTimerTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeakTimerTarget.h; sourceTree = "<group>"; };
+		721A278520A284BD0042E18C /* JSRMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRMessage.h; sourceTree = "<group>"; };
+		721A278620A284BD0042E18C /* JSRMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRMessage.m; sourceTree = "<group>"; };
+		721A278820A2A2AE0042E18C /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		721A278920A2A2AE0042E18C /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		721A278B20A2F18A0042E18C /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
 		9AD7BEBE8DCA149005C471C7 /* Pods-JWebSocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWebSocket.release.xcconfig"; path = "Pods/Target Support Files/Pods-JWebSocket/Pods-JWebSocket.release.xcconfig"; sourceTree = "<group>"; };
 		F1C8A2502CF6B7A0C3BDE10B /* Pods-JWebSocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWebSocket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JWebSocket/Pods-JWebSocket.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,8 +115,13 @@
 			children = (
 				720D7F9E209FFF780085D404 /* JSRManager.h */,
 				720D7F9F209FFF780085D404 /* JSRManager.m */,
+				721A278520A284BD0042E18C /* JSRMessage.h */,
+				721A278620A284BD0042E18C /* JSRMessage.m */,
+				721A278820A2A2AE0042E18C /* User.h */,
+				721A278920A2A2AE0042E18C /* User.m */,
 				721A278320A1953A0042E18C /* WeakTimerTarget.h */,
 				721A278220A1953A0042E18C /* WeakTimerTarget.m */,
+				721A278B20A2F18A0042E18C /* readme */,
 			);
 			path = WBSocketCom;
 			sourceTree = "<group>";
@@ -171,6 +184,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				721A278C20A2F18A0042E18C /* readme in Resources */,
 				720D7F94209FFB4D0085D404 /* LaunchScreen.storyboard in Resources */,
 				720D7F91209FFB4D0085D404 /* Assets.xcassets in Resources */,
 				720D7F8F209FFB4B0085D404 /* Main.storyboard in Resources */,
@@ -206,6 +220,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				720D7F8C209FFB4B0085D404 /* ViewController.m in Sources */,
+				721A278A20A2A2AE0042E18C /* User.m in Sources */,
+				721A278720A284BD0042E18C /* JSRMessage.m in Sources */,
 				721A278420A1953A0042E18C /* WeakTimerTarget.m in Sources */,
 				720D7FA0209FFF780085D404 /* JSRManager.m in Sources */,
 				720D7F97209FFB4D0085D404 /* main.m in Sources */,
