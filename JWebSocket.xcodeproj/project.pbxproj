@@ -17,8 +17,9 @@
 		721A278420A1953A0042E18C /* WeakTimerTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 721A278220A1953A0042E18C /* WeakTimerTarget.m */; };
 		721A278720A284BD0042E18C /* JSRMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 721A278620A284BD0042E18C /* JSRMessage.m */; };
 		721A278A20A2A2AE0042E18C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 721A278920A2A2AE0042E18C /* User.m */; };
-		721A278C20A2F18A0042E18C /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 721A278B20A2F18A0042E18C /* readme */; };
 		721A278E20A3EAA30042E18C /* 22.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 721A278D20A3EAA30042E18C /* 22.jpg */; };
+		721A279120A411D70042E18C /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 721A278F20A411D70042E18C /* index.js */; };
+		721A279220A411D70042E18C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 721A279020A411D70042E18C /* README.md */; };
 		86AB9B6DCA85B976829AC2AD /* libPods-JWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6117AEB92AF7A0F8693B3B /* libPods-JWebSocket.a */; };
 /* End PBXBuildFile section */
 
@@ -42,8 +43,9 @@
 		721A278620A284BD0042E18C /* JSRMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRMessage.m; sourceTree = "<group>"; };
 		721A278820A2A2AE0042E18C /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		721A278920A2A2AE0042E18C /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		721A278B20A2F18A0042E18C /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
 		721A278D20A3EAA30042E18C /* 22.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 22.jpg; sourceTree = "<group>"; };
+		721A278F20A411D70042E18C /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
+		721A279020A411D70042E18C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9AD7BEBE8DCA149005C471C7 /* Pods-JWebSocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWebSocket.release.xcconfig"; path = "Pods/Target Support Files/Pods-JWebSocket/Pods-JWebSocket.release.xcconfig"; sourceTree = "<group>"; };
 		F1C8A2502CF6B7A0C3BDE10B /* Pods-JWebSocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWebSocket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JWebSocket/Pods-JWebSocket.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +82,8 @@
 		720D7F7B209FFB4B0085D404 = {
 			isa = PBXGroup;
 			children = (
+				721A278F20A411D70042E18C /* index.js */,
+				721A279020A411D70042E18C /* README.md */,
 				720D7F86209FFB4B0085D404 /* JWebSocket */,
 				720D7F85209FFB4B0085D404 /* Products */,
 				3C1C41D1418C004091348BD8 /* Pods */,
@@ -123,7 +127,6 @@
 				721A278920A2A2AE0042E18C /* User.m */,
 				721A278320A1953A0042E18C /* WeakTimerTarget.h */,
 				721A278220A1953A0042E18C /* WeakTimerTarget.m */,
-				721A278B20A2F18A0042E18C /* readme */,
 				721A278D20A3EAA30042E18C /* 22.jpg */,
 			);
 			path = WBSocketCom;
@@ -188,8 +191,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				721A278E20A3EAA30042E18C /* 22.jpg in Resources */,
-				721A278C20A2F18A0042E18C /* readme in Resources */,
 				720D7F94209FFB4D0085D404 /* LaunchScreen.storyboard in Resources */,
+				721A279220A411D70042E18C /* README.md in Resources */,
+				721A279120A411D70042E18C /* index.js in Resources */,
 				720D7F91209FFB4D0085D404 /* Assets.xcassets in Resources */,
 				720D7F8F209FFB4B0085D404 /* Main.storyboard in Resources */,
 			);

@@ -4,23 +4,21 @@ var WebSocketServer = require('ws').Server,
 wss = new WebSocketServer({ port: 8081 });
 
 var HashMap = require('hashmap');
-// record the client
+//连接池
 var userConnectionMap = new HashMap();
 var connectNum = 0;
-//连接池
-var clients = [];
+
+
 wss.on('connection', function (ws) {
     ++ connectNum;
     console.log('A client has connected. current connect num is : ' + connectNum);
 
-    //加入连接池
-    clients.push(ws);
-
+    var objMessage;
     //收到消息回调
     ws.on('message', function (message) {
 
         console.log(message);
-        var objMessage = JSON.parse(message);
+        objMessage = JSON.parse(message);
         var strType  = objMessage['type'];
         //objMessage['chatId'] 发送者的唯一表示 chatId是约定好的字段
         console.log('json序列化'+objMessage['chatId']);
@@ -35,24 +33,18 @@ wss.on('connection', function (ws) {
                     ws_send.send(message);
                 }
         }
-
-        // clients.forEach(function(ws_send){
-        //     var toWs = userConnectionMap.get(objMessage['to']);
-        //     if(ws_send == toWs) {
-        //         ws_send.send(message);
-        //         console.log('向客户端发送了消息');
-        //         //ws.send('服务器返回消息:'+ message);  
-        //     }
-        // })
         
 
     });
 
     // 退出聊天  
     ws.on('close', function(close) {  
-      
-        console.log('退出连接了');  
-        userConnectionMap.remove(objMessage['chatId']);
+        
+        console.log('退出连接了',userConnectionMap);
+        if (objMessage !== nil) {
+            userConnectionMap.remove(objMessage['chatId']);
+            -- connectNum;
+        }
     }); 
 
     ws.on('error',error); 
