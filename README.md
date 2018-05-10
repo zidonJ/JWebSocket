@@ -1,7 +1,6 @@
 # JWebSocket
 iOS-WebSocket
 
-
 iOS端利用SocketRocket+Nodejs做聊天的
 
 WebSocket都是基于连接的,也就是说我们知道data是从那个connection发过来,但并不知道使用客户端的是a或者b,此时我们就需要在Server端能够标识用户身份和连接的对应关系。

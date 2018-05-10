@@ -81,9 +81,13 @@ NSString * const JSRSendMsg = @"JSRSendMsg";
     }
 }
 
-- (void)sendImage:(id)imageMsg
+- (void)sendImage:(NSDictionary *)imageMsg
 {
-    
+    NSError *error;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:imageMsg options:NSJSONWritingPrettyPrinted error:&error];
+    if (data && error == nil) {
+        [self sendData:data];
+    }
 }
 
 #pragma mark -- private func

@@ -41,10 +41,11 @@ wss.on('connection', function (ws) {
     ws.on('close', function(close) {  
         
         console.log('退出连接了',userConnectionMap);
-        if (objMessage !== nil) {
+        if (objMessage == null) {
             userConnectionMap.remove(objMessage['chatId']);
             -- connectNum;
         }
+        
     }); 
 
     ws.on('error',error); 

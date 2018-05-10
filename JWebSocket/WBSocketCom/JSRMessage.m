@@ -10,16 +10,6 @@
 
 @implementation JSRMessage
 
-- (instancetype)initWithMessage:(NSString *)message incoming:(BOOL)incoming
-{
-    self = [super init];
-    if (!self) return self;
-    
-    _incoming = incoming;
-    _message = message;
-    
-    return self;
-}
 
 
 @end

@@ -13,6 +13,7 @@
 #define MT_SSELF_NIL_RETURN MT_SSELF;if (!self) {return ;}
 
 static NSString * const kMsgType = @"type";
+static NSString * const kUrlSringKey = @"urlstring";
 
 typedef NSString * NSMessageTypeString;
 

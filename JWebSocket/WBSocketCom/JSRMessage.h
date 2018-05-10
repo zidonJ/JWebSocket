@@ -7,14 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+typedef NS_ENUM(NSUInteger, JSRMessageType) {
+    StringType,
+    DataType,
+    ImageTpe
+};
 
 @interface JSRMessage : NSObject
 
-- (instancetype)initWithMessage:(NSString *)message incoming:(BOOL)incoming;
-
-@property (nonatomic,copy) NSString *receiverId;
-@property (nonatomic,copy) NSString *senderId;
-@property (nonatomic, copy, readonly) NSString *message;
-@property (nonatomic, assign, readonly, getter=isIncoming) BOOL incoming;
+@property (nonatomic,assign) JSRMessageType msgType;
+@property (nonatomic,copy) NSString *sendToId;
+@property (nonatomic, copy) NSString *message;
+@property (nonatomic, copy) UIImage *image;
+@property (nonatomic, assign) BOOL incoming;
 
 @end
