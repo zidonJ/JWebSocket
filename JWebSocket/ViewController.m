@@ -15,6 +15,7 @@
     __weak IBOutlet UITextField *_content;
     __weak IBOutlet UITextField *_loginId;
     __weak IBOutlet UITextField *_sendToId;
+    __weak IBOutlet UIImageView *_imgView;
 }
 @end
 
@@ -38,7 +39,14 @@
     if ([message isKindOfClass:[NSString class]]) {
         _messageLabel.text = [_messageLabel.text stringByAppendingFormat:@"\n%@",message];
     }else{
-        _messageLabel.text = [_messageLabel.text stringByAppendingFormat:@"\n%@",message[@"content"]];
+        id content = message[@"content"];
+        NSData *data = [[NSData alloc] initWithBase64EncodedString:content
+                                                           options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        if (data.length) {
+            _imgView.image = [UIImage imageWithData:data];
+        }else{
+            _messageLabel.text = [_messageLabel.text stringByAppendingFormat:@"\n%@",message[@"content"]];
+        }
     }
 }
 
@@ -50,6 +58,17 @@
 - (IBAction)sendingMsg:(UIButton *)sender
 {
     [[JSRManager sharedInstance] sendMessage:@{@"content":_content.text,@"to":_sendToId.text,kMsgType:JSRSendMsg}];
+    _content.text = @"";
+}
+
+- (IBAction)sendImage:(UIButton *)sender
+{
+    UIImage *image = [UIImage imageNamed:@"22.jpg"];
+    NSString *imageString =
+    [UIImageJPEGRepresentation(image, 1) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    [[JSRManager sharedInstance] sendMessage:@{@"content":imageString,
+                                               @"to":_sendToId.text,
+                                               kMsgType:JSRSendMsg}];
     _content.text = @"";
 }
 

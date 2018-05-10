@@ -79,6 +79,10 @@ NSString * const JSRSendMsg = @"JSRSendMsg";
     }else{
         [self sendData:msg];
     }
+}
+
+- (void)sendImage:(id)imageMsg
+{
     
 }
 

@@ -37,52 +37,97 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVP-OQ-VD3">
-                                <rect key="frame" x="229" y="335" width="130" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVP-OQ-VD3">
+                                <rect key="frame" x="229" y="330" width="130" height="55"/>
                                 <color key="backgroundColor" red="0.34901960780000002" green="0.6705882353" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="VBL-PT-iNU"/>
+                                    <constraint firstAttribute="width" constant="130" id="Xlv-Yo-r69"/>
+                                </constraints>
                                 <state key="normal" title="发送消息"/>
                                 <connections>
                                     <action selector="sendingMsg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iqx-l3-Vjr"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="登陆id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3gV-Lk-M70">
-                                <rect key="frame" x="16" y="373" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="登陆id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3gV-Lk-M70">
+                                <rect key="frame" x="16" y="370" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="gXi-UO-rch"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="发送给谁" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cMs-cT-BaC">
-                                <rect key="frame" x="16" y="335" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHN-OY-goc">
-                                <rect key="frame" x="16" y="411" width="69" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHN-OY-goc">
+                                <rect key="frame" x="16" y="410" width="60" height="40"/>
                                 <color key="backgroundColor" red="0.34901960780000002" green="0.6705882353" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="ckO-t3-1xF"/>
+                                    <constraint firstAttribute="height" constant="40" id="q84-up-Klx"/>
+                                </constraints>
                                 <state key="normal" title="登陆"/>
                                 <connections>
                                     <action selector="loginChat:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fm2-u7-go5"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="发送给谁" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cMs-cT-BaC">
+                                <rect key="frame" x="16" y="330" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Lvs-hQ-SSG"/>
+                                    <constraint firstAttribute="height" constant="30" id="VYO-pK-D9Q"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XFc-r6-uYC">
+                                <rect key="frame" x="159" y="447" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="cvz-Zh-E3u"/>
+                                    <constraint firstAttribute="height" constant="200" id="zot-wg-C2J"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJO-dk-CsX">
+                                <rect key="frame" x="12" y="497.5" width="135" height="100"/>
+                                <color key="backgroundColor" red="0.34901960780000002" green="0.6705882353" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="MTd-d3-uTs"/>
+                                    <constraint firstAttribute="height" constant="100" id="nj5-Um-ETL"/>
+                                </constraints>
+                                <state key="normal" title="Send a Image"/>
+                                <connections>
+                                    <action selector="sendImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3D3-ao-RXk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XFc-r6-uYC" secondAttribute="trailing" constant="16" id="0Cq-IJ-cHc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XFc-r6-uYC" secondAttribute="bottom" constant="20" id="1Pa-sq-LbL"/>
+                            <constraint firstItem="XFc-r6-uYC" firstAttribute="leading" secondItem="NJO-dk-CsX" secondAttribute="trailing" constant="12" id="3ic-uY-dsj"/>
+                            <constraint firstItem="NJO-dk-CsX" firstAttribute="centerY" secondItem="XFc-r6-uYC" secondAttribute="centerY" id="8Te-xs-DHa"/>
+                            <constraint firstItem="RHN-OY-goc" firstAttribute="leading" secondItem="cMs-cT-BaC" secondAttribute="leading" id="Az0-rE-CK6"/>
+                            <constraint firstItem="ZVP-OQ-VD3" firstAttribute="top" secondItem="UW9-e6-95l" secondAttribute="bottom" constant="20" id="BFE-mQ-ckf"/>
+                            <constraint firstItem="3gV-Lk-M70" firstAttribute="top" secondItem="cMs-cT-BaC" secondAttribute="bottom" constant="10" id="DKi-GH-qQy"/>
                             <constraint firstItem="UW9-e6-95l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IkU-1d-OEY"/>
+                            <constraint firstItem="3gV-Lk-M70" firstAttribute="leading" secondItem="cMs-cT-BaC" secondAttribute="leading" id="IvL-KN-h1z"/>
+                            <constraint firstItem="cMs-cT-BaC" firstAttribute="top" secondItem="UW9-e6-95l" secondAttribute="bottom" constant="20" id="JVJ-dh-LLz"/>
                             <constraint firstItem="UW9-e6-95l" firstAttribute="top" secondItem="p7S-5i-3l2" secondAttribute="bottom" constant="10" id="Lnx-ik-bI7"/>
                             <constraint firstItem="p7S-5i-3l2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MF6-KM-ZZl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZVP-OQ-VD3" secondAttribute="trailing" constant="16" id="PiU-aF-FNG"/>
+                            <constraint firstItem="cMs-cT-BaC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="YcU-on-wKX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UW9-e6-95l" secondAttribute="trailing" id="mns-JQ-lKR"/>
+                            <constraint firstItem="3gV-Lk-M70" firstAttribute="trailing" secondItem="cMs-cT-BaC" secondAttribute="trailing" id="nXr-P5-Cby"/>
+                            <constraint firstItem="RHN-OY-goc" firstAttribute="top" secondItem="3gV-Lk-M70" secondAttribute="bottom" constant="10" id="qDJ-5k-leZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="p7S-5i-3l2" secondAttribute="trailing" id="rLf-5A-gER"/>
                             <constraint firstItem="p7S-5i-3l2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="uDt-wS-c3D"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZVP-OQ-VD3" secondAttribute="trailing" constant="16" id="uRl-3E-7AN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="_content" destination="UW9-e6-95l" id="I7L-fv-XBx"/>
+                        <outlet property="_imgView" destination="XFc-r6-uYC" id="jJZ-gd-RjI"/>
                         <outlet property="_loginId" destination="3gV-Lk-M70" id="Yja-vW-Shk"/>
                         <outlet property="_messageLabel" destination="p7S-5i-3l2" id="LuV-e3-hIy"/>
                         <outlet property="_sendToId" destination="cMs-cT-BaC" id="v06-ZY-ye9"/>
