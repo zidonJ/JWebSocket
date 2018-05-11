@@ -24,7 +24,7 @@ NSString * const JSRSendMsg = @"JSRSendMsg";
 @interface JSRManager()<SRWebSocketDelegate>
 
 {
-    NSTimer * _heartBeat;
+    NSTimer * _msgTimer;
     NSTimeInterval _reConnectTimes;
 }
 @property (nonatomic,strong) SRWebSocket *socket;
@@ -129,19 +129,19 @@ NSString * const JSRSendMsg = @"JSRSendMsg";
         [self.socket sendPing:nil];
     }
 }
-//初始化心跳
+//初始化定时消息
 - (void)initHeartBeat
 {
     dispatch_main_async_safe( ^{
         [self destoryHeartBeat];
         //心跳设置为3分钟,NAT超时一般为5分钟
-        self->_heartBeat = [NSTimer timerWithTimeInterval:3
+        self->_msgTimer = [NSTimer timerWithTimeInterval:3
                                                    target:self
-                                                 selector:@selector(sentHeart)
+                                                 selector:@selector(sentTimerMsg)
                                                  userInfo:nil
                                                   repeats:YES];
         //和服务端约定好发送什么作为心跳标识,尽可能的减小心跳包大小
-        [[NSRunLoop currentRunLoop] addTimer:self->_heartBeat forMode:NSRunLoopCommonModes];
+        [[NSRunLoop currentRunLoop] addTimer:self->_msgTimer forMode:NSRunLoopCommonModes];
     });
 }
 //销毁心跳
@@ -149,11 +149,11 @@ NSString * const JSRSendMsg = @"JSRSendMsg";
 {
     dispatch_main_async_safe(^{
         
-        if (self->_heartBeat) {
-            if ([self->_heartBeat respondsToSelector:@selector(isValid)]){
-                if ([self->_heartBeat isValid]){
-                    [self->_heartBeat invalidate];
-                    self->_heartBeat = nil;
+        if (self->_msgTimer) {
+            if ([self->_msgTimer respondsToSelector:@selector(isValid)]){
+                if ([self->_msgTimer isValid]){
+                    [self->_msgTimer invalidate];
+                    self->_msgTimer = nil;
                 }
             }
         }
@@ -196,7 +196,7 @@ NSString * const JSRSendMsg = @"JSRSendMsg";
     });
 }
 
--(void)sentHeart
+-(void)sentTimerMsg
 {
 //    NSDictionary *dic = @{@"chatId":@"111",@"content":@"这是一段经典的旋律",@"type":@"receive"};
 //    NSError *error;
@@ -272,7 +272,6 @@ NSString * const JSRSendMsg = @"JSRSendMsg";
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithString:(nonnull NSString *)string
 {
     NSLog(@"Received \"%@\"", string);
-    //[self _addMessage:[[JSRMessage alloc] initWithMessage:string incoming:YES]];
 }
 
 @end
