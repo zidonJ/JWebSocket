@@ -20,6 +20,8 @@ dispatch_async(dispatch_get_main_queue(), block);\
 
 NSString * const JSRLogin = @"login";
 NSString * const JSRSendMsg = @"JSRSendMsg";
+NSString * const JSRSendImg = @"JSRSendImg";
+NSString * const JSRSendVideo = @"JSRSendVideo";
 
 @interface JSRManager()<SRWebSocketDelegate>
 
@@ -87,6 +89,16 @@ NSString * const JSRSendMsg = @"JSRSendMsg";
     NSData *data = [NSJSONSerialization dataWithJSONObject:imageMsg options:NSJSONWritingPrettyPrinted error:&error];
     if (data && error == nil) {
         [self sendData:data];
+    }
+}
+
+- (void)sendWithEncodeSampleBuffer:(NSData *)data
+{
+    NSError *error;
+    NSDictionary *dic = @{@"content":data,@"to":@"2",kMsgType:JSRSendMsg};
+    NSData *data1 = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
+    if (data && error == nil) {
+        [self sendData:data1];
     }
 }
 

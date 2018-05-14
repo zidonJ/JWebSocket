@@ -20,6 +20,10 @@
 		721A278E20A3EAA30042E18C /* 22.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 721A278D20A3EAA30042E18C /* 22.jpg */; };
 		721A279120A411D70042E18C /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 721A278F20A411D70042E18C /* index.js */; };
 		721A279220A411D70042E18C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 721A279020A411D70042E18C /* README.md */; };
+		7224718620A548130029070F /* MediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7224718520A548130029070F /* MediaViewController.m */; };
+		7230BA4F20A95CE900D1D40B /* AAPLEAGLLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7230BA4B20A95CE800D1D40B /* AAPLEAGLLayer.m */; };
+		7230BA5020A95CE900D1D40B /* H264HwEncoderImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7230BA4C20A95CE800D1D40B /* H264HwEncoderImpl.m */; };
+		7230BA5120A95CE900D1D40B /* H264HwDecoderImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7230BA4E20A95CE800D1D40B /* H264HwDecoderImpl.m */; };
 		86AB9B6DCA85B976829AC2AD /* libPods-JWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6117AEB92AF7A0F8693B3B /* libPods-JWebSocket.a */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +50,15 @@
 		721A278D20A3EAA30042E18C /* 22.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 22.jpg; sourceTree = "<group>"; };
 		721A278F20A411D70042E18C /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		721A279020A411D70042E18C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7224718420A548130029070F /* MediaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediaViewController.h; sourceTree = "<group>"; };
+		7224718520A548130029070F /* MediaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaViewController.m; sourceTree = "<group>"; };
+		7230BA4920A95CE800D1D40B /* H264HwEncoderImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = H264HwEncoderImpl.h; sourceTree = "<group>"; };
+		7230BA4A20A95CE800D1D40B /* H264HwDecoderImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = H264HwDecoderImpl.h; sourceTree = "<group>"; };
+		7230BA4B20A95CE800D1D40B /* AAPLEAGLLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLEAGLLayer.m; sourceTree = "<group>"; };
+		7230BA4C20A95CE800D1D40B /* H264HwEncoderImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = H264HwEncoderImpl.m; sourceTree = "<group>"; };
+		7230BA4D20A95CE800D1D40B /* AAPLEAGLLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLEAGLLayer.h; sourceTree = "<group>"; };
+		7230BA4E20A95CE800D1D40B /* H264HwDecoderImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = H264HwDecoderImpl.m; sourceTree = "<group>"; };
+		7230BA5220A9608900D1D40B /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		9AD7BEBE8DCA149005C471C7 /* Pods-JWebSocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWebSocket.release.xcconfig"; path = "Pods/Target Support Files/Pods-JWebSocket/Pods-JWebSocket.release.xcconfig"; sourceTree = "<group>"; };
 		F1C8A2502CF6B7A0C3BDE10B /* Pods-JWebSocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWebSocket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JWebSocket/Pods-JWebSocket.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,11 +115,14 @@
 		720D7F86209FFB4B0085D404 /* JWebSocket */ = {
 			isa = PBXGroup;
 			children = (
+				7230BA4820A95CE800D1D40B /* H264lib */,
 				720D7F9D209FFF1C0085D404 /* WBSocketCom */,
 				720D7F87209FFB4B0085D404 /* AppDelegate.h */,
 				720D7F88209FFB4B0085D404 /* AppDelegate.m */,
 				720D7F8A209FFB4B0085D404 /* ViewController.h */,
 				720D7F8B209FFB4B0085D404 /* ViewController.m */,
+				7224718420A548130029070F /* MediaViewController.h */,
+				7224718520A548130029070F /* MediaViewController.m */,
 				720D7F8D209FFB4B0085D404 /* Main.storyboard */,
 				720D7F90209FFB4D0085D404 /* Assets.xcassets */,
 				720D7F92209FFB4D0085D404 /* LaunchScreen.storyboard */,
@@ -130,6 +146,20 @@
 				721A278D20A3EAA30042E18C /* 22.jpg */,
 			);
 			path = WBSocketCom;
+			sourceTree = "<group>";
+		};
+		7230BA4820A95CE800D1D40B /* H264lib */ = {
+			isa = PBXGroup;
+			children = (
+				7230BA4D20A95CE800D1D40B /* AAPLEAGLLayer.h */,
+				7230BA4B20A95CE800D1D40B /* AAPLEAGLLayer.m */,
+				7230BA4920A95CE800D1D40B /* H264HwEncoderImpl.h */,
+				7230BA4C20A95CE800D1D40B /* H264HwEncoderImpl.m */,
+				7230BA4A20A95CE800D1D40B /* H264HwDecoderImpl.h */,
+				7230BA4E20A95CE800D1D40B /* H264HwDecoderImpl.m */,
+				7230BA5220A9608900D1D40B /* config.h */,
+			);
+			path = H264lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,12 +258,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				720D7F8C209FFB4B0085D404 /* ViewController.m in Sources */,
+				7230BA5120A95CE900D1D40B /* H264HwDecoderImpl.m in Sources */,
 				721A278A20A2A2AE0042E18C /* User.m in Sources */,
 				721A278720A284BD0042E18C /* JSRMessage.m in Sources */,
+				7230BA4F20A95CE900D1D40B /* AAPLEAGLLayer.m in Sources */,
 				721A278420A1953A0042E18C /* WeakTimerTarget.m in Sources */,
 				720D7FA0209FFF780085D404 /* JSRManager.m in Sources */,
 				720D7F97209FFB4D0085D404 /* main.m in Sources */,
 				720D7F89209FFB4B0085D404 /* AppDelegate.m in Sources */,
+				7224718620A548130029070F /* MediaViewController.m in Sources */,
+				7230BA5020A95CE900D1D40B /* H264HwEncoderImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +408,7 @@
 			baseConfigurationReference = F1C8A2502CF6B7A0C3BDE10B /* Pods-JWebSocket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ET3Y989RPW;
 				INFOPLIST_FILE = JWebSocket/Info.plist;
@@ -392,6 +427,7 @@
 			baseConfigurationReference = 9AD7BEBE8DCA149005C471C7 /* Pods-JWebSocket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ET3Y989RPW;
 				INFOPLIST_FILE = JWebSocket/Info.plist;

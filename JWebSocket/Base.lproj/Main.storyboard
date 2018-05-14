@@ -99,6 +99,14 @@
                                     <action selector="sendImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3D3-ao-RXk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agK-7r-bMs">
+                                <rect key="frame" x="42" y="607.5" width="74" height="34"/>
+                                <color key="backgroundColor" red="0.34901960780000002" green="0.6705882353" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="视频聊天"/>
+                                <connections>
+                                    <segue destination="jlq-cD-Ctm" kind="modal" id="0BU-j5-mLo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -106,8 +114,10 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XFc-r6-uYC" secondAttribute="bottom" constant="20" id="1Pa-sq-LbL"/>
                             <constraint firstItem="XFc-r6-uYC" firstAttribute="leading" secondItem="NJO-dk-CsX" secondAttribute="trailing" constant="12" id="3ic-uY-dsj"/>
                             <constraint firstItem="NJO-dk-CsX" firstAttribute="centerY" secondItem="XFc-r6-uYC" secondAttribute="centerY" id="8Te-xs-DHa"/>
+                            <constraint firstItem="agK-7r-bMs" firstAttribute="top" secondItem="NJO-dk-CsX" secondAttribute="bottom" constant="10" id="AMD-NX-IFH"/>
                             <constraint firstItem="RHN-OY-goc" firstAttribute="leading" secondItem="cMs-cT-BaC" secondAttribute="leading" id="Az0-rE-CK6"/>
                             <constraint firstItem="ZVP-OQ-VD3" firstAttribute="top" secondItem="UW9-e6-95l" secondAttribute="bottom" constant="20" id="BFE-mQ-ckf"/>
+                            <constraint firstItem="agK-7r-bMs" firstAttribute="centerX" secondItem="NJO-dk-CsX" secondAttribute="centerX" id="Chn-G9-LGq"/>
                             <constraint firstItem="3gV-Lk-M70" firstAttribute="top" secondItem="cMs-cT-BaC" secondAttribute="bottom" constant="10" id="DKi-GH-qQy"/>
                             <constraint firstItem="UW9-e6-95l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IkU-1d-OEY"/>
                             <constraint firstItem="3gV-Lk-M70" firstAttribute="leading" secondItem="cMs-cT-BaC" secondAttribute="leading" id="IvL-KN-h1z"/>
@@ -136,6 +146,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="72.413793103448285"/>
+        </scene>
+        <!--Media View Controller-->
+        <scene sceneID="2cs-ku-Lhq">
+            <objects>
+                <viewController id="jlq-cD-Ctm" customClass="MediaViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hJe-oP-xBw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QaX-RF-ocD">
+                                <rect key="frame" x="0.0" y="367" width="375" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="6py-C5-M2H"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fxi-x4-W3x" firstAttribute="trailing" secondItem="QaX-RF-ocD" secondAttribute="trailing" id="4py-6q-tuy"/>
+                            <constraint firstItem="fxi-x4-W3x" firstAttribute="bottom" secondItem="QaX-RF-ocD" secondAttribute="bottom" id="MW0-gs-vYs"/>
+                            <constraint firstItem="QaX-RF-ocD" firstAttribute="leading" secondItem="fxi-x4-W3x" secondAttribute="leading" id="urR-ez-KAu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fxi-x4-W3x"/>
+                    </view>
+                    <connections>
+                        <outlet property="_imgView" destination="QaX-RF-ocD" id="Fz1-Rb-7Sy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ln8-XY-ezn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="850" y="76"/>
         </scene>
     </scenes>
 </document>

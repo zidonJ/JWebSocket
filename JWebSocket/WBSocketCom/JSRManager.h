@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@import CoreMedia;
 
 #define MT_WSELF __weak __typeof__(self) _weakSelf = self;
 #define MT_SSELF __strong __typeof__(self) self = _weakSelf;
@@ -19,6 +20,8 @@ typedef NSString * NSMessageTypeString;
 
 extern NSMessageTypeString const JSRLogin;
 extern NSMessageTypeString const JSRSendMsg;
+extern NSMessageTypeString const JSRSendImg;
+extern NSMessageTypeString const JSRSendVideo;
 
 
 @protocol JSRManagerDelegate;
@@ -33,6 +36,9 @@ extern NSMessageTypeString const JSRSendMsg;
 - (void)loginWithUserId:(NSDictionary *)userInfo;
 
 @property (nonatomic,weak) id <JSRManagerDelegate> delegate;
+
+
+- (void)sendWithEncodeSampleBuffer:(NSData *)data;
 
 @end
 
