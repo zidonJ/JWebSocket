@@ -24,32 +24,32 @@ wss.on('connection', function (ws) {
              console.log('json序列化'+objMessage['chatId']);
              switch(strType) {
              case 'login' :
-             userConnectionMap.set(objMessage['chatId'], ws);
+                userConnectionMap.set(objMessage['chatId'], ws);
              break;
              default:
-             var ws_send = userConnectionMap.get(objMessage['to']);
-             if (ws_send) {
-             console.log('向客户端发送了消息');
-             ws_send.send(message);
-             }
+                var ws_send = userConnectionMap.get(objMessage['to']);
+                if (ws_send) {
+                    console.log('向客户端发送了消息');
+                    ws_send.send(message);
+                }
              }
              
              
-             });
+        });
        
        // 退出聊天
        ws.on('close', function(close) {
              
              console.log('退出连接了',userConnectionMap);
              if (objMessage == null) {
-             userConnectionMap.remove(objMessage['chatId']);
-             -- connectNum;
+                userConnectionMap.remove(objMessage['chatId']);
+                -- connectNum;
              }
              
-             });
+       });
        
        ws.on('error',error);
-       });
+});
 
 function error(err){
     //处理错误
