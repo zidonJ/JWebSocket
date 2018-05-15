@@ -40,8 +40,7 @@ void didCompressH264(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStat
 {
     if (status != 0) return;
     
-    if (!CMSampleBufferDataIsReady(sampleBuffer))
-    {
+    if (!CMSampleBufferDataIsReady(sampleBuffer)) {
         NSLog(@"didCompressH264 data is not ready ");
         return;
     }
@@ -49,14 +48,12 @@ void didCompressH264(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStat
     
     bool keyframe = !CFDictionaryContainsKey( (CFArrayGetValueAtIndex(CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, true), 0)), kCMSampleAttachmentKey_NotSync);
     
-    if (keyframe)
-    {
+    if (keyframe) {
         CMFormatDescriptionRef format = CMSampleBufferGetFormatDescription(sampleBuffer);
         size_t sparameterSetSize, sparameterSetCount;
         const uint8_t *sparameterSet;
         OSStatus statusCode = CMVideoFormatDescriptionGetH264ParameterSetAtIndex(format, 0, &sparameterSet, &sparameterSetSize, &sparameterSetCount, 0 );
-        if (statusCode == noErr)
-        {
+        if (statusCode == noErr) {
             size_t pparameterSetSize, pparameterSetCount;
             const uint8_t *pparameterSet;
             OSStatus statusCode = CMVideoFormatDescriptionGetH264ParameterSetAtIndex(format, 1, &pparameterSet, &pparameterSetSize, &pparameterSetCount, 0 );
@@ -80,8 +77,7 @@ void didCompressH264(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStat
         
         size_t bufferOffset = 0;
         static const int AVCCHeaderLength = 4;
-        while (bufferOffset < totalLength - AVCCHeaderLength)
-        {
+        while (bufferOffset < totalLength - AVCCHeaderLength) {
             uint32_t NALUnitLength = 0;
             memcpy(&NALUnitLength, dataPointer + bufferOffset, AVCCHeaderLength);
             NALUnitLength = CFSwapInt32BigToHost(NALUnitLength);
@@ -91,7 +87,6 @@ void didCompressH264(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStat
         }
         
     }
-    
 }
 
 
@@ -99,8 +94,8 @@ void didCompressH264(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStat
 {
     dispatch_sync(aQueue, ^{
         OSStatus status = VTCompressionSessionCreate(NULL, width, height, kCMVideoCodecType_H264, NULL, NULL, NULL, didCompressH264, (__bridge void *)(self),  &EncodingSession);
-        if (status != 0)
-        {
+        
+        if (status != 0) {
             NSLog(@"Error by VTCompressionSessionCreate  ");
             return ;
         }
@@ -120,10 +115,10 @@ void didCompressH264(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStat
         VTCompressionSessionPrepareToEncodeFrames(EncodingSession);
     });
 }
+
 - (void) encode:(CMSampleBufferRef )sampleBuffer
 {
-    if (EncodingSession==nil||EncodingSession==NULL)
-    {
+    if (EncodingSession==nil||EncodingSession==NULL) {
         return;
     }
     dispatch_sync(aQueue, ^{
@@ -136,10 +131,9 @@ void didCompressH264(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStat
                                                               presentationTimeStamp,
                                                               kCMTimeInvalid,
                                                               NULL, NULL, &flags);
-        if (statusCode != noErr)
-        {
-            if (EncodingSession!=nil||EncodingSession!=NULL)
-            {
+        if (statusCode != noErr) {
+            
+            if (EncodingSession!=nil||EncodingSession!=NULL) {
                 VTCompressionSessionInvalidate(EncodingSession);
                 CFRelease(EncodingSession);
                 EncodingSession = NULL;
@@ -148,7 +142,5 @@ void didCompressH264(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStat
         }
     });
 }
-
-
 
 @end

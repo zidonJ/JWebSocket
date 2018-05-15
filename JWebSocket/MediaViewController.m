@@ -199,9 +199,7 @@ previewPhotoSampleBuffer:(nullable CMSampleBufferRef)previewPhotoSampleBuffer
     _imgView.image = img;
     CGImageRelease( cgImage );
     
-    
     [_264Ecoder encode:sampleBuffer];
-    
     
 //    CMBlockBufferRef blockBufferRef = CMSampleBufferGetDataBuffer(sampleBuffer);
 //    size_t length = CMBlockBufferGetDataLength(blockBufferRef);
