@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "express": "^4.16.4",
+    "hashmap": "^2.3.0",
+    "ws": "^6.1.2"
+  }
+}

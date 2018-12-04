@@ -1,7 +1,8 @@
 //创建websocketServer
+'use strict';
 var WebSocketServer = require('ws').Server,
 
-wss = new WebSocketServer({ port: 8081 });
+wss = new WebSocketServer({ port: 8181 });
 
 var HashMap = require('hashmap');
 //连接池
@@ -56,4 +57,4 @@ function error(err){
     console.log('报错了');
 }
 
-console.log('开始监听8081端口');
+console.log('开始监听8181端口');
