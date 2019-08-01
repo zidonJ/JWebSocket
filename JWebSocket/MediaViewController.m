@@ -101,13 +101,11 @@
 
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"屏蔽上级界面的touch事件");
     //[self dismissViewControllerAnimated:YES completion:nil];
     if ([self.session canAddOutput:self.videoOutPut]) {
@@ -140,8 +138,7 @@ didFinishProcessingPhotoSampleBuffer:(nullable CMSampleBufferRef)photoSampleBuff
 previewPhotoSampleBuffer:(nullable CMSampleBufferRef)previewPhotoSampleBuffer
      resolvedSettings:(AVCaptureResolvedPhotoSettings *)resolvedSettings
       bracketSettings:(nullable AVCaptureBracketedStillImageSettings *)bracketSettings
-                error:(nullable NSError *)error/** iOS10*/
-{
+                error:(nullable NSError *)error/** iOS10*/ {
     
     NSData *imageData = [AVCapturePhotoOutput JPEGPhotoDataRepresentationForJPEGSampleBuffer:photoSampleBuffer
                                                                     previewPhotoSampleBuffer:previewPhotoSampleBuffer];
@@ -152,30 +149,26 @@ previewPhotoSampleBuffer:(nullable CMSampleBufferRef)previewPhotoSampleBuffer
 }
 #pragma clang diagnostic pop
 
-- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
-{
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
     
 }
 
 /** NS_AVAILABLE_IOS(11.0) 去掉只支持iOS11的警告*/
-- (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhoto:(AVCapturePhoto *)photo error:(NSError *)error NS_AVAILABLE_IOS(11.0)
-{
+- (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhoto:(AVCapturePhoto *)photo error:(NSError *)error NS_AVAILABLE_IOS(11.0) {
     NSData *data = [photo fileDataRepresentation];
     UIImage *image = [UIImage imageWithData:data];
     
     UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
 }
 
-- (void)captureOutput:(AVCapturePhotoOutput *)output didFinishRecordingLivePhotoMovieForEventualFileAtURL:(NSURL *)outputFileURL resolvedSettings:(AVCaptureResolvedPhotoSettings *)resolvedSettings
-{
+- (void)captureOutput:(AVCapturePhotoOutput *)output didFinishRecordingLivePhotoMovieForEventualFileAtURL:(NSURL *)outputFileURL resolvedSettings:(AVCaptureResolvedPhotoSettings *)resolvedSettings {
     
     
 }
 
 #pragma mark -- AVCaptureVideoDataOutputSampleBufferDelegate
 
-- (CGImageRef) imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer // Create a CGImageRef from sample buffer data
-{
+- (CGImageRef) imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer {
     
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     CVPixelBufferLockBaseAddress(imageBuffer,0);// Lock the image buffer
@@ -197,8 +190,7 @@ previewPhotoSampleBuffer:(nullable CMSampleBufferRef)previewPhotoSampleBuffer
     return newImage;
 }
 
-- (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
-{
+- (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
     CGImageRef cgImage = [self imageFromSampleBuffer:sampleBuffer];
     UIImage *img = [UIImage imageWithCGImage:cgImage];
     _imgView.image = img;
@@ -215,22 +207,19 @@ previewPhotoSampleBuffer:(nullable CMSampleBufferRef)previewPhotoSampleBuffer
     
 }
 
-- (void)captureOutput:(AVCaptureOutput *)output didDropSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
-{
+- (void)captureOutput:(AVCaptureOutput *)output didDropSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
     NSLog(@"录像le啦");
 }
 
 #pragma mark -- H264HwEncoderImplDelegate
 
-- (void)gotSpsPps:(NSData *)sps pps:(NSData *)pps
-{
+- (void)gotSpsPps:(NSData *)sps pps:(NSData *)pps {
     dispatch_async(dispatch_get_main_queue(), ^{
         !_describeData?:_describeData(sps,pps);
     });
 }
 
-- (void)gotEncodedData:(NSData *)data isKeyFrame:(BOOL)isKeyFrame
-{
+- (void)gotEncodedData:(NSData *)data isKeyFrame:(BOOL)isKeyFrame {
     dispatch_async(dispatch_get_main_queue(), ^{
        !_backData?:_backData(data);
     });
@@ -238,16 +227,14 @@ previewPhotoSampleBuffer:(nullable CMSampleBufferRef)previewPhotoSampleBuffer
 
 #pragma mark --getters
 
-- (AVCaptureSession *)session
-{
+- (AVCaptureSession *)session {
     if (!_session) {
         _session = [[AVCaptureSession alloc] init];
     }
     return _session;
 }
 
-- (AVCaptureDevice *)device
-{
+- (AVCaptureDevice *)device {
     if (!_device) {
         AVCaptureDeviceDiscoverySession *discoverySession =
         [AVCaptureDeviceDiscoverySession discoverySessionWithDeviceTypes:@[AVCaptureDeviceTypeBuiltInWideAngleCamera]
@@ -261,8 +248,7 @@ previewPhotoSampleBuffer:(nullable CMSampleBufferRef)previewPhotoSampleBuffer
     return _device;
 }
 
-- (AVCaptureDeviceInput *)input
-{
+- (AVCaptureDeviceInput *)input {
     if (!_input) {
         NSError *error = nil;
         _input = [AVCaptureDeviceInput deviceInputWithDevice:self.device error:&error];
@@ -274,16 +260,14 @@ previewPhotoSampleBuffer:(nullable CMSampleBufferRef)previewPhotoSampleBuffer
     return _input;
 }
 
-- (AVCapturePhotoOutput *)photoOutPut
-{
+- (AVCapturePhotoOutput *)photoOutPut {
     if (!_photoOutPut) {
         _photoOutPut = [[AVCapturePhotoOutput alloc] init];
     }
     return _photoOutPut;
 }
 
-- (AVCaptureVideoPreviewLayer *)videoCaptureLayer
-{
+- (AVCaptureVideoPreviewLayer *)videoCaptureLayer {
     
     if (!_videoCaptureLayer) {
         _videoCaptureLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];
@@ -293,16 +277,14 @@ previewPhotoSampleBuffer:(nullable CMSampleBufferRef)previewPhotoSampleBuffer
     return _videoCaptureLayer;
 }
 
-- (AVCapturePhotoSettings *)settings
-{
+- (AVCapturePhotoSettings *)settings {
     if (!_settings) {
         _settings = [AVCapturePhotoSettings photoSettings];
     }
     return _settings;
 }
 
-- (AVCaptureVideoDataOutput *)videoOutPut
-{
+- (AVCaptureVideoDataOutput *)videoOutPut {
     if (!_videoOutPut) {
         _videoOutPut = [[AVCaptureVideoDataOutput alloc] init];
     }
