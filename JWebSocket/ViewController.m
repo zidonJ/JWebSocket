@@ -43,7 +43,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [[JSRManager sharedInstance] openWithUrlString:@"ws://192.168.85.84:8081/"];
+    [[JSRManager sharedInstance] openWithUrlString:@"ws://10.0.15.22:8181/"];
     [self.view endEditing:YES];
 }
 
@@ -92,7 +92,7 @@
     [UIImageJPEGRepresentation(image, 1) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     [[JSRManager sharedInstance] sendMessage:@{@"content":imageString,
                                                @"to":_sendToId.text,
-                                               kMsgType:JSRSendMsg}];
+                                               kMsgType:JSRSendImg}];
     _content.text = @"";
 }
 
