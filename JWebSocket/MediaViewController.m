@@ -94,6 +94,11 @@
     
     [self.session startRunning];
     
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 350, 200, 30)];
+    label.text = @"点击视频传输画面";
+    [self.view addSubview:label];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
