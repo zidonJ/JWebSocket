@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "hashmap": "^2.3.0",
     "ws": "^6.1.2"
   }
